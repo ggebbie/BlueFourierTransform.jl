@@ -1,0 +1,6 @@
+[deps]
+BlueFourierTransform = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+
+[sources]
+BlueFourierTransform = {path = ".."}

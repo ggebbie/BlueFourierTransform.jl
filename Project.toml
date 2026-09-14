@@ -1,0 +1,13 @@
+name = "BlueFourierTransform"
+uuid = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
+authors = ["G Jake Gebbie <ggebbie@whoi.edu>"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.13"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

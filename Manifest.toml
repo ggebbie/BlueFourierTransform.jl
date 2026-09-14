@@ -1,0 +1,10 @@
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.13.0"
+manifest_format = "2.1"
+project_hash = "8f06c4bd27c26b2f77fdfea3d2321546e8d28819"
+
+[[deps.BlueFourierTransform]]
+path = "."
+uuid = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
+version = "1.0.0-DEV"
