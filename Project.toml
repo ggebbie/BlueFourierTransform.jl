@@ -1,9 +1,21 @@
 name = "BlueFourierTransform"
 uuid = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
-authors = ["G Jake Gebbie <ggebbie@whoi.edu>"]
 version = "1.0.0-DEV"
+authors = ["G Jake Gebbie <ggebbie@whoi.edu>"]
+
+[deps]
+BLUEs = "b3a7f272-e305-45d1-bcf3-14d22bb67726"
+OffsetArrays = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
+SpectraFromScratch = "d75dfb16-ab8e-4c05-ba24-63f12bc833ed"
+
+[sources]
+BLUEs = {rev = "main", url = "https://github.com/ggebbie/BLUEs.jl"}
+SpectraFromScratch = {rev = "main", url = "https://github.com/ggebbie/SpectraFromScratch.jl"}
 
 [compat]
+BLUEs = "0.3.5"
+OffsetArrays = "1.17.0"
+SpectraFromScratch = "0.4.2"
 julia = "1.13"
 
 [extras]
