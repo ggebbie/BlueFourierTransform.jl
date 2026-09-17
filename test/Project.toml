@@ -1,0 +1,12 @@
+[deps]
+BLUEs = "b3a7f272-e305-45d1-bcf3-14d22bb67726"
+BlueFourierTransform = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
+OffsetArrays = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+SpectraFromScratch = "d75dfb16-ab8e-4c05-ba24-63f12bc833ed"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[sources]
+BLUEs = {rev = "main", url = "https://github.com/ggebbie/BLUEs.jl"}
+BlueFourierTransform = {path = ".."}
+SpectraFromScratch = {rev = "main", url = "https://github.com/ggebbie/SpectraFromScratch.jl"}
