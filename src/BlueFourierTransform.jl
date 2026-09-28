@@ -14,7 +14,7 @@ import SpectraFromScratch: FourierTransform
 #     Ψ::FrequencySpectrum, # first guess frequency spectrum
 #     σ2mean::Number) # uncertainty of mean value, not given by spectrum
 
-function blue_fourier_transform(
+function FourierTransform(
     func, # takes input and get obs
     y, # observations
     Ψ, # first guess frequency spectrum
@@ -27,10 +27,6 @@ function blue_fourier_transform(
     E = impulse_response(x0.v, func)
     println(E)
     
-    # necessary?
-    # first-guess prediction of the obs
-    # y0 = E*x0
-
     # solve for Fourier Transform
     x1 = combine(x0, y, E)
     return x1
@@ -38,16 +34,16 @@ end
 
 function construct_first_guess(Ψ, σ2mean)
     ffundamental = first(Ψ.freq) # fundamental frequency
-    n = length(Ψ.psi)
+    n = length(Ψ.psd)
     N = 2n # assume even number of points
     T = 1/ffundamental # repeat interval
     
     # A = amplitude of waves (?)
     # some care is taken for singular Nyquist frequency
-    A0 = vcat(sqrt.(Ψ.psi[1:end-1] .* (N^2 / 2T)),
-              sqrt.(Ψ.psi[end] .* (N^2 / T)))  
+    A0 = vcat(sqrt.(Ψ.psd[1:end-1] .* (N^2 / 2T)),
+              sqrt.(Ψ.psd[end] .* (N^2 / T)))  
 
-    sample_state_val = sqrt(first(Ψ.psi)*first(Ψ.freq))
+    sample_state_val = sqrt(first(Ψ.psd)*first(Ψ.freq))
     vx0 = zeros(eltype(sample_state_val),N)
 
     σx0 = vcat(N*σ2mean, #mean value (scaled to Fourier coefficient)
@@ -76,12 +72,6 @@ end
 function SpectraFromScratch.FourierTransform(v::Vector, df::Number)
     N = length(v)
     n = SpectraFromScratch.fourier_modes(N) 
-
-    # if iseven(N)
-    #     n = -(N/2):((N/2)-1)
-    # else
-    #     n = -(N/2):((N/2))
-    # end
 
     sample = first(v) + im*first(v)
     coeff = OffsetArray( fill( zero(eltype(sample)), N), n)
