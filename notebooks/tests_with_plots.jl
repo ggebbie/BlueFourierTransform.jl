@@ -7,6 +7,9 @@ using InteractiveUtils
 # ╔═╡ 8b2fe3cb-4557-4634-82b8-1e14e403bfcb
 import Pkg; Pkg.activate(".")
 
+# ╔═╡ 0b4e822a-0bda-430a-9e88-27897dac9491
+Pkg.add(url="https://github.com/ggebbie/SpectraFromScratch.jl")
+
 # ╔═╡ 8cbfce62-ea81-42ed-95bd-3bfc052c50ac
 Pkg.develop(path="../../SpectraFromScratch.jl")
 
@@ -50,7 +53,7 @@ end
 # ╔═╡ 16f76114-2812-4ee0-b6bf-6b9832d08757
 # plot spectrum
 plot(Ψ.freq,
-	Ψ.psi,
+	Ψ.psd,
 	#ylims=(1e-5,1e3),
 	yscale=:log10,
  	xscale=:log10,
@@ -222,7 +225,7 @@ Plots.scatter(x̂̃)
 begin
 	
 	plot(Ψ.freq,
-		Ψ.psi,
+		Ψ.psd,
 		#ylims=(1e-5,1e3),
 		yscale=:log10,
  		xscale=:log10,
@@ -233,7 +236,7 @@ begin
 	)
 
 	plot!(Ψ̃.freq,
-		Ψ̃.psi,
+		Ψ̃.psd,
 		#ylims=(1e-5,1e3),
 		yscale=:log10,
  		xscale=:log10,
@@ -260,6 +263,7 @@ end
 # ╠═4b0a896e-b28a-11f1-b73f-77977d857f62
 # ╠═8b2fe3cb-4557-4634-82b8-1e14e403bfcb
 # ╠═09001ed8-00a9-4d65-bf2f-70a87fac3e4f
+# ╠═0b4e822a-0bda-430a-9e88-27897dac9491
 # ╠═1e8fe281-32a0-4923-8b1a-b35d6bdc28a7
 # ╠═8cbfce62-ea81-42ed-95bd-3bfc052c50ac
 # ╠═5ca1234f-374e-4838-834d-96a792125b9a
