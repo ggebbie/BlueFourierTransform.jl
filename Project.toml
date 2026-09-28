@@ -1,6 +1,6 @@
 name = "BlueFourierTransform"
 uuid = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
-version = "1.0.0-DEV"
+version = "1.1.0-DEV"
 authors = ["G Jake Gebbie <ggebbie@whoi.edu>"]
 
 [deps]

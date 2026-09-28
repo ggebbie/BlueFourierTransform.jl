@@ -7,12 +7,6 @@ using InteractiveUtils
 # ╔═╡ 8b2fe3cb-4557-4634-82b8-1e14e403bfcb
 import Pkg; Pkg.activate(".")
 
-# ╔═╡ 0b4e822a-0bda-430a-9e88-27897dac9491
-Pkg.add(url="https://github.com/ggebbie/SpectraFromScratch.jl")
-
-# ╔═╡ 8cbfce62-ea81-42ed-95bd-3bfc052c50ac
-Pkg.develop(path="../../SpectraFromScratch.jl")
-
 # ╔═╡ 09001ed8-00a9-4d65-bf2f-70a87fac3e4f
 begin
 	using Revise
@@ -156,7 +150,7 @@ begin
     y_estimate = Estimate(y, fill(σn, M))
 
     # solve for BLUE of Fourier Transform
-    u = BlueFourierTransform.blue_fourier_transform(
+    u = FourierTransform(
         irregular_sample_control_variables, # takes input and get obs
         #irregular_sample_control_variables_interp, # takes input and get obs
         y_estimate, # observations
@@ -263,9 +257,7 @@ end
 # ╠═4b0a896e-b28a-11f1-b73f-77977d857f62
 # ╠═8b2fe3cb-4557-4634-82b8-1e14e403bfcb
 # ╠═09001ed8-00a9-4d65-bf2f-70a87fac3e4f
-# ╠═0b4e822a-0bda-430a-9e88-27897dac9491
 # ╠═1e8fe281-32a0-4923-8b1a-b35d6bdc28a7
-# ╠═8cbfce62-ea81-42ed-95bd-3bfc052c50ac
 # ╠═5ca1234f-374e-4838-834d-96a792125b9a
 # ╠═16f76114-2812-4ee0-b6bf-6b9832d08757
 # ╠═f7a1395a-b65a-4d84-a062-8851b82af3ad

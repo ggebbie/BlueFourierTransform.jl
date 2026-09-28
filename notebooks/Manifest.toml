@@ -2,7 +2,7 @@
 
 julia_version = "1.13.0"
 manifest_format = "2.1"
-project_hash = "ae76f36a9611635be8320523bfc9ffb07d8fcc10"
+project_hash = "b92956b8503794d8f6a17ce6bd1e67c3a6e2631b"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -673,6 +673,13 @@ deps = ["StyledStrings"]
 uuid = "ac6e5ff7-fb65-4e79-a425-ec3bc9c03011"
 version = "1.12.0"
 
+[[deps.Kaleido_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "43032da5832754f58d14a91ffbe86d5f176acda9"
+registries = "General"
+uuid = "f7e6163d-2fa5-5f23-b69c-1db539e41963"
+version = "0.2.1+0"
+
 [[deps.LAME_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
 git-tree-sha1 = "059aabebaa7c82ccb853dd4a0ee9d17796f7e1bc"
@@ -1103,6 +1110,13 @@ version = "0.8.23"
     IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
     JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
 
+[[deps.PlotlyKaleido]]
+deps = ["Artifacts", "Base64", "JSON", "Kaleido_jll"]
+git-tree-sha1 = "c7a270d11881c0709052f8e3def3d60d551e99f3"
+registries = "General"
+uuid = "f2990250-8cf9-495f-b13a-cce12b45703c"
+version = "2.3.1"
+
 [[deps.Plots]]
 deps = ["Base64", "Contour", "Dates", "Downloads", "FFMPEG", "FixedPointNumbers", "GR", "JLFzf", "JSON", "LaTeXStrings", "Latexify", "LinearAlgebra", "Measures", "NaNMath", "Pkg", "PlotThemes", "PlotUtils", "PrecompileTools", "Printf", "REPL", "Random", "RecipesBase", "RecipesPipeline", "Reexport", "RelocatableFolders", "Requires", "Scratch", "Showoff", "SparseArrays", "Statistics", "StatsBase", "TOML", "UUIDs", "UnicodeFun", "Unzip"]
 git-tree-sha1 = "83bd514e8ff16b5858ac54c53fa0bcf6002a3b00"
@@ -1396,9 +1410,11 @@ weakdeps = ["ChainRulesCore"]
 
 [[deps.SpectraFromScratch]]
 deps = ["Distributions", "FFTW", "OffsetArrays", "Statistics"]
-path = "../../SpectraFromScratch.jl"
+git-tree-sha1 = "bf75275cc74796a9ccf6b992f6a21635ed205603"
+repo-rev = "main"
+repo-url = "https://github.com/ggebbie/SpectraFromScratch.jl"
 uuid = "d75dfb16-ab8e-4c05-ba24-63f12bc833ed"
-version = "0.4.5"
+version = "0.5.0"
 
 [[deps.StaticArrays]]
 deps = ["LinearAlgebra", "PrecompileTools", "Random", "StaticArraysCore"]
