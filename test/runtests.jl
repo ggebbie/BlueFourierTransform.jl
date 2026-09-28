@@ -55,7 +55,7 @@ using OffsetArrays
     y_estimate = Estimate(y, fill(σn, M))
 
     # solve for BLUE of Fourier Transform
-    u = BlueFourierTransform.blue_fourier_transform(
+    u = FourierTransform(
         irregular_sample_control_variables, # takes input and get obs
         y_estimate, # observations
         Ψ, # first guess frequency spectrum
