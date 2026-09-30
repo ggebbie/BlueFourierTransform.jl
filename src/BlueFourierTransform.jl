@@ -21,11 +21,10 @@ function FourierTransform(
     σ2mean::Number) # uncertainty of mean value, not given by spectrum
 
     x0 = construct_first_guess(Ψ, σ2mean)
-    
+
     # issue: what are the units?
     # maybe passing the first guess will solve it
     E = impulse_response(x0.v, func)
-    println(E)
     
     # solve for Fourier Transform
     x1 = combine(x0, y, E)
@@ -58,8 +57,9 @@ function impulse_response(input0, func)
     E = zeros(eltype(first(output0)/first(input0)), length(output0), length(input0))
     input = deepcopy(input0)
     for i in 1:length(input0)
-	delta = one(eltype(input))
-
+	delta = oneunit(eltype(input))
+        println(delta)
+        
 	# delta = 1.0*unit(first(input))
 	input[i] += delta
 	E[:,i] = (vec(func(input)) -
