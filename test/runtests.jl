@@ -9,7 +9,7 @@ using Unitful
 @testset "BlueFourierTransform.jl" begin
 
     ## make a power law (sample frequency spectrum)
-    ucases = [false, true]
+    ucases = (false, true)
     # case: units or no units
     for units in ucases
         
@@ -44,7 +44,8 @@ using Unitful
         ## make regular timeseries
         x̂true = SpectraFromScratch.FourierTransform(Ψ)
         xtrue = SpectraFromScratch.RegularTimeseries(x̂true)
-        @test isapprox(sum(xtrue.x), zero(eltype(xtrue.x)), atol=1e-10*oneunit(eltype(xtrue.x)))
+        @test isapprox(sum(xtrue.x), zero(eltype(xtrue.x)),
+            atol=1e-10*oneunit(eltype(xtrue.x)))
         
         ## will need to independently decide on the mean value
         # (i.e., no info in frequency spectrum)
@@ -70,6 +71,25 @@ using Unitful
         # save samples and expected noise together in an `Estimate`
         y = Estimate(y_contaminated, fill(σn, M))
 
+        # lets try to split everything up
+        x0 = BlueFourierTransform.construct_first_guess(Ψ, σxbar)
+
+        E = BlueFourierTransform.impulse_response(x0.v,
+            irregular_sample_control_variables)
+    
+        # even split up BLUEs.combine
+        # x1 = combine(x0, y, E)
+
+        nvec = y.v - E * x0.v
+        sumP = y.P + E * x0.P * transpose(E)
+
+        # needs AlgebraicArrays to be added in order to work
+        v = x0.v + x0.P * transpose(E) *
+            (  sumP \ nvec )
+        P = x0.P - x0.P * transpose(E) *
+            ( sumP \ (E * x0.P) )
+
+        # Here, we solve everything at once
         # solve for BLUE of Fourier Transform
         u = FourierTransform(
             irregular_sample_control_variables, # takes input and get obs
@@ -79,7 +99,7 @@ using Unitful
 
         # how well does it recontruct the obs?
         ỹ = irregular_sample_control_variables(u.v)
-        @test sqrt(sum(((y-ỹ)/σn).^2)/M) < 1
+        @test sqrt(sum(((y_contaminated-ỹ)/σn).^2)/M) < 1
 
         # how close is the Fourier Transform description of the data?
         # they actually look pretty different

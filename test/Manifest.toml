@@ -2,7 +2,7 @@
 
 julia_version = "1.13.1"
 manifest_format = "2.1"
-project_hash = "9db42242d3597fddab68de9bb30c257827c018de"
+project_hash = "fa42aec8f21542b75df3f9278f8ab9676057f849"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -44,6 +44,22 @@ version = "0.1.45"
     Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
     Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
+[[deps.AlgebraicArrays]]
+deps = ["LinearAlgebra"]
+git-tree-sha1 = "82c22d5d32bd084ea788d9071a5b218670a4401f"
+repo-rev = "main"
+repo-url = "https://github.com/ggebbie/AlgebraicArrays.jl"
+uuid = "8af735f6-f3e5-4048-bdaa-40a2355e9eea"
+version = "1.0.11-DEV"
+
+    [deps.AlgebraicArrays.extensions]
+    AlgebraicArraysDimensionalDataExt = ["DimensionalData"]
+    AlgebraicArraysUnitfulExt = ["Unitful"]
+
+    [deps.AlgebraicArrays.weakdeps]
+    DimensionalData = "0703355e-b756-11e9-17c0-8b28908087d0"
+    Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
+
 [[deps.AliasTables]]
 deps = ["PtrArrays", "Random"]
 git-tree-sha1 = "9876e1e164b144ca45e9e3198d0b689cadfed9ff"
@@ -61,11 +77,11 @@ version = "1.11.0"
 
 [[deps.BLUEs]]
 deps = ["LinearAlgebra", "Measurements", "SparseArrays"]
-git-tree-sha1 = "76f6d73fae12f4e6b613a3c9e7c11c1b99c55f97"
+git-tree-sha1 = "d99a25fd1a9a5cd535ab5dbaa6531031262b88dd"
 repo-rev = "main"
 repo-url = "https://github.com/ggebbie/BLUEs.jl"
 uuid = "b3a7f272-e305-45d1-bcf3-14d22bb67726"
-version = "0.3.5"
+version = "0.5.0"
 
     [deps.BLUEs.extensions]
     AA_DD_ULA_Ext = ["UnitfulLinearAlgebra", "DimensionalData", "AlgebraicArrays"]
@@ -571,10 +587,10 @@ version = "0.5.2+0"
 
 [[deps.Roots]]
 deps = ["Accessors", "CommonSolve", "Printf"]
-git-tree-sha1 = "4db094d5e079abbda658acfe1c4d098430417717"
+git-tree-sha1 = "a700562d106889a6e103b0d4db2a14f94c43db0c"
 registries = "General"
 uuid = "f2b01f46-fcfa-551c-844a-d8ac1e96c665"
-version = "3.0.8"
+version = "3.0.9"
 
     [deps.Roots.extensions]
     RootsChainRulesCoreExt = "ChainRulesCore"
@@ -631,9 +647,11 @@ version = "2.9.0"
 
 [[deps.SpectraFromScratch]]
 deps = ["Distributions", "FFTW", "OffsetArrays", "Statistics"]
-path = "../../SpectraFromScratch.jl"
+git-tree-sha1 = "88594de3373b1feabf729c012b66842623019ebe"
+repo-rev = "main"
+repo-url = "https://github.com/ggebbie/SpectraFromScratch.jl"
 uuid = "d75dfb16-ab8e-4c05-ba24-63f12bc833ed"
-version = "0.5.1"
+version = "0.5.2"
 weakdeps = ["Unitful"]
 
     [deps.SpectraFromScratch.extensions]

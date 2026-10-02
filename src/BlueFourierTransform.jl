@@ -6,14 +6,6 @@ using OffsetArrays
 
 import SpectraFromScratch: FourierTransform
 
-# Write your package code here.
-# function blue_fourier_transform(
-#     func, # takes input and get obs
-#     y::Estimate, # observations
-#     # x0::Estimate, # first guess
-#     Ψ::FrequencySpectrum, # first guess frequency spectrum
-#     σ2mean::Number) # uncertainty of mean value, not given by spectrum
-
 function FourierTransform(
     func, # takes input and get obs
     y, # observations
@@ -58,9 +50,6 @@ function impulse_response(input0, func)
     input = deepcopy(input0)
     for i in 1:length(input0)
 	delta = oneunit(eltype(input))
-        println(delta)
-        
-	# delta = 1.0*unit(first(input))
 	input[i] += delta
 	E[:,i] = (vec(func(input)) -
 		  vec(output0))./delta

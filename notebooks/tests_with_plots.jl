@@ -61,6 +61,9 @@ plot(Ψ.freq,
 ## make regular timeseries (non-deterministic)
 x̂true = SpectraFromScratch.FourierTransform(Ψ)    
 
+# ╔═╡ 70824ba7-673d-4998-9b07-733b7fd89136
+phase(x̂true)
+
 # ╔═╡ 81ea80de-4e29-46e5-a5b2-3ab12faee0b5
 xtrue = SpectraFromScratch.RegularTimeseries(x̂true)
 
@@ -74,7 +77,7 @@ plot(0.0 .+ xtrue.time,
 ## make irregular samples (using linear interpolation)
 begin
     Tinclusive =  maximum(xtrue.time) - minimum(xtrue.time)
-    M = 100; # number of observations
+    M = 20; # number of observations
     t = rand(M)*Tinclusive
 end
 
@@ -107,7 +110,7 @@ ytrue_interp = irregular_sample_fourier_transform_interp(t, x̂true)
 # ╔═╡ 8b66a95a-1e69-4ade-9eec-da0a1d7aef2c
 begin
     # contaminate observations with noise
-    σn = 0.1
+    σn = 0.5
     noise = σn * randn(M)
     y = ytrue .+ noise
     y_interp = ytrue_interp .+ noise
@@ -151,8 +154,8 @@ begin
 
     # solve for BLUE of Fourier Transform
     u = FourierTransform(
-        irregular_sample_control_variables, # takes input and get obs
-        #irregular_sample_control_variables_interp, # takes input and get obs
+        #irregular_sample_control_variables, # takes input and get obs
+        irregular_sample_control_variables_interp, # takes input and get obs
         y_estimate, # observations
         Ψ, # first guess frequency spectrum
         1.0) # uncertainty of mean value, not given by spectrum
@@ -261,6 +264,7 @@ end
 # ╠═5ca1234f-374e-4838-834d-96a792125b9a
 # ╠═16f76114-2812-4ee0-b6bf-6b9832d08757
 # ╠═f7a1395a-b65a-4d84-a062-8851b82af3ad
+# ╠═70824ba7-673d-4998-9b07-733b7fd89136
 # ╠═81ea80de-4e29-46e5-a5b2-3ab12faee0b5
 # ╠═4d278660-dd7a-4749-9765-67ad369eefa2
 # ╠═7ce0b464-a849-4211-8a14-314fb4294eb3
