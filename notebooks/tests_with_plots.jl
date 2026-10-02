@@ -17,23 +17,46 @@ begin
 	using OffsetArrays
 	using Plots
 	using Interpolations
+	using Unitful
+	using AlgebraicArrays
 end
 
 # ╔═╡ 4b0a896e-b28a-11f1-b73f-77977d857f62
 # testing BlueFourierTransform
 
-# ╔═╡ bbf5fc8e-5aa6-4c2c-9bf0-bfa29aa27ad3
-Pkg.update("SpectraFromScratch")
-
 # ╔═╡ 1e8fe281-32a0-4923-8b1a-b35d6bdc28a7
 plotly()
 
 # ╔═╡ 9bc25924-52ee-4c2a-9d41-68fa26b21ed9
-# input parameters 
+# input parameters (always nondimensional)
 begin
     N = 20 # number of points on regularly sampled grid
     β = 2.0  # power law 
     M = 10 # number of observations
+end
+
+# ╔═╡ 800268df-d276-48ba-b0ba-cba2f12017af
+# ╠═╡ disabled = true
+#=╠═╡
+# other input parameters (unitless)
+begin
+    T = 1000 # repeat interval
+    σ2 = 1.0  # estimate of total variance
+    σxbar = 1.0  # uncertainty of mean (not given by spectrum)
+    σn = 0.1 # noise (contamination) in observations
+end
+  ╠═╡ =#
+
+# ╔═╡ e5c469f7-a708-4e2c-84ed-ec99318852e5
+# other input parameters (with units)
+begin
+    ENV["UNITFUL_FANCY_EXPONENTS"] = true
+    yr = u"yr"
+    K = u"K"
+    T = 1000yr # repeat interval
+    σ2 = 1.0K^2  # estimate of total variance
+    σxbar = 1.0K  # uncertainty of mean (not given by spectrum)
+    σn = 0.1K # noise (contamination) in observations
 end
 
 # ╔═╡ 5ca1234f-374e-4838-834d-96a792125b9a
@@ -70,7 +93,7 @@ x̂true = SpectraFromScratch.FourierTransform(Ψ)
 xtrue = SpectraFromScratch.RegularTimeseries(x̂true)
 
 # ╔═╡ 4d278660-dd7a-4749-9765-67ad369eefa2
-plot(0.0 .+ xtrue.time,
+plot(xtrue.time,
 	xtrue.x,
 	title = "true timeseries",
 	legend=false)
@@ -118,7 +141,7 @@ end
 
 # ╔═╡ c746ff66-9c81-48d7-86a8-aee1a2c05dc8
 begin
-	plot(0.0 .+ xtrue.time,
+	plot(xtrue.time,
 	xtrue.x,
 		 label = "linear interp. truth",
 	title = "timeseries and obs",
@@ -158,7 +181,7 @@ begin
         irregular_sample_control_variables_interp, # takes input and get obs
         y_estimate, # observations
         Ψ, # first guess frequency spectrum
-        1.0) # uncertainty of mean value, not given by spectrum
+        σxbar) # uncertainty of mean value, not given by spectrum
 
     # TAKEAWAY: you can use interp of FT to predict obs, it is faster, but not quite as good at reproducing the truth
     # toggle the func name above to see these results
@@ -256,31 +279,9 @@ begin
 	plot!(ϕtrue[1:end], label="ϕ_true")	
 end
 
-# ╔═╡ e5c469f7-a708-4e2c-84ed-ec99318852e5
-# ╠═╡ disabled = true
-#=╠═╡
-# other input parameters (with units)
-begin
-    T = 1000yr # repeat interval
-    σ2 = 1.0K^2  # estimate of total variance
-    σxbar = 1.0K  # uncertainty of mean (not given by spectrum)
-    σn = 0.1K # noise (contamination) in observations
-end
-  ╠═╡ =#
-
-# ╔═╡ 800268df-d276-48ba-b0ba-cba2f12017af
-# other input parameters (unitless)
-begin
-    T = 1000 # repeat interval
-    σ2 = 1.0  # estimate of total variance
-    σxbar = 1.0  # uncertainty of mean (not given by spectrum)
-    σn = 0.1 # noise (contamination) in observations
-end
-
 # ╔═╡ Cell order:
 # ╠═4b0a896e-b28a-11f1-b73f-77977d857f62
 # ╠═8b2fe3cb-4557-4634-82b8-1e14e403bfcb
-# ╠═bbf5fc8e-5aa6-4c2c-9bf0-bfa29aa27ad3
 # ╠═09001ed8-00a9-4d65-bf2f-70a87fac3e4f
 # ╠═1e8fe281-32a0-4923-8b1a-b35d6bdc28a7
 # ╠═9bc25924-52ee-4c2a-9d41-68fa26b21ed9
