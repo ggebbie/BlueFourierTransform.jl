@@ -1,8 +1,8 @@
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.13.0"
+julia_version = "1.13.1"
 manifest_format = "2.1"
-project_hash = "b92956b8503794d8f6a17ce6bd1e67c3a6e2631b"
+project_hash = "ea7e00568d44afd03955f214d0201b67c81e2be4"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -59,6 +59,22 @@ weakdeps = ["SparseArrays", "StaticArrays"]
     AdaptSparseArraysExt = "SparseArrays"
     AdaptStaticArraysExt = "StaticArrays"
 
+[[deps.AlgebraicArrays]]
+deps = ["LinearAlgebra"]
+git-tree-sha1 = "82c22d5d32bd084ea788d9071a5b218670a4401f"
+repo-rev = "main"
+repo-url = "https://github.com/ggebbie/AlgebraicArrays.jl"
+uuid = "8af735f6-f3e5-4048-bdaa-40a2355e9eea"
+version = "1.0.11-DEV"
+
+    [deps.AlgebraicArrays.extensions]
+    AlgebraicArraysDimensionalDataExt = ["DimensionalData"]
+    AlgebraicArraysUnitfulExt = ["Unitful"]
+
+    [deps.AlgebraicArrays.weakdeps]
+    DimensionalData = "0703355e-b756-11e9-17c0-8b28908087d0"
+    Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
+
 [[deps.AliasTables]]
 deps = ["PtrArrays", "Random"]
 git-tree-sha1 = "9876e1e164b144ca45e9e3198d0b689cadfed9ff"
@@ -83,11 +99,11 @@ version = "1.1.0"
 
 [[deps.BLUEs]]
 deps = ["LinearAlgebra", "Measurements", "SparseArrays"]
-git-tree-sha1 = "76f6d73fae12f4e6b613a3c9e7c11c1b99c55f97"
+git-tree-sha1 = "d99a25fd1a9a5cd535ab5dbaa6531031262b88dd"
 repo-rev = "main"
 repo-url = "https://github.com/ggebbie/BLUEs.jl"
 uuid = "b3a7f272-e305-45d1-bcf3-14d22bb67726"
-version = "0.3.5"
+version = "0.5.0"
 
     [deps.BLUEs.extensions]
     AA_DD_ULA_Ext = ["UnitfulLinearAlgebra", "DimensionalData", "AlgebraicArrays"]
@@ -117,7 +133,7 @@ version = "0.1.10"
 deps = ["BLUEs", "OffsetArrays", "SpectraFromScratch"]
 path = ".."
 uuid = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
-version = "1.0.0-DEV"
+version = "1.1.0-DEV"
 
 [[deps.Bzip2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
@@ -770,7 +786,7 @@ version = "1.9.1+0"
 [[deps.LibSSH2_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl", "OpenSSL_jll", "Zlib_jll"]
 uuid = "29816b5a-b9ab-546f-933c-edad1886dfa8"
-version = "1.11.103+0"
+version = "1.11.104+0"
 
 [[deps.Libdl]]
 uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
@@ -1093,10 +1109,10 @@ version = "1.5.0"
 
 [[deps.PlotlyBase]]
 deps = ["ColorSchemes", "Colors", "Dates", "DelimitedFiles", "DocStringExtensions", "JSON", "LaTeXStrings", "Logging", "Parameters", "Pkg", "REPL", "Requires", "Statistics", "UUIDs"]
-git-tree-sha1 = "6256ab3ee24ef079b3afa310593817e069925eeb"
+git-tree-sha1 = "83585da0006b18bea4731b042017567252156895"
 registries = "General"
 uuid = "a03496cd-edff-5a9b-9e67-9cda94a718b5"
-version = "0.8.23"
+version = "0.10.0"
 
     [deps.PlotlyBase.extensions]
     DataFramesExt = "DataFrames"
@@ -1410,11 +1426,17 @@ weakdeps = ["ChainRulesCore"]
 
 [[deps.SpectraFromScratch]]
 deps = ["Distributions", "FFTW", "OffsetArrays", "Statistics"]
-git-tree-sha1 = "bf75275cc74796a9ccf6b992f6a21635ed205603"
+git-tree-sha1 = "88594de3373b1feabf729c012b66842623019ebe"
 repo-rev = "main"
 repo-url = "https://github.com/ggebbie/SpectraFromScratch.jl"
 uuid = "d75dfb16-ab8e-4c05-ba24-63f12bc833ed"
-version = "0.5.0"
+version = "0.5.2"
+
+    [deps.SpectraFromScratch.extensions]
+    SFS_UnitfulExt = ["Unitful"]
+
+    [deps.SpectraFromScratch.weakdeps]
+    Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
 [[deps.StaticArrays]]
 deps = ["LinearAlgebra", "PrecompileTools", "Random", "StaticArraysCore"]

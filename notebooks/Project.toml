@@ -1,4 +1,5 @@
 [deps]
+AlgebraicArrays = "8af735f6-f3e5-4048-bdaa-40a2355e9eea"
 BLUEs = "b3a7f272-e305-45d1-bcf3-14d22bb67726"
 BlueFourierTransform = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
 Interpolations = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
@@ -12,6 +13,7 @@ Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 SpectraFromScratch = "d75dfb16-ab8e-4c05-ba24-63f12bc833ed"
 
 [sources]
+AlgebraicArrays = {rev = "main", url = "https://github.com/ggebbie/AlgebraicArrays.jl"}
 BLUEs = {rev = "main", url = "https://github.com/ggebbie/BLUEs.jl"}
 BlueFourierTransform = {path = ".."}
 SpectraFromScratch = {rev = "main", url = "https://github.com/ggebbie/SpectraFromScratch.jl"}

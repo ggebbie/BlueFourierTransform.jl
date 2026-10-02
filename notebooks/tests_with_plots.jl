@@ -22,22 +22,27 @@ end
 # ╔═╡ 4b0a896e-b28a-11f1-b73f-77977d857f62
 # testing BlueFourierTransform
 
+# ╔═╡ bbf5fc8e-5aa6-4c2c-9bf0-bfa29aa27ad3
+Pkg.update("SpectraFromScratch")
+
 # ╔═╡ 1e8fe281-32a0-4923-8b1a-b35d6bdc28a7
 plotly()
+
+# ╔═╡ 9bc25924-52ee-4c2a-9d41-68fa26b21ed9
+# input parameters 
+begin
+    N = 20 # number of points on regularly sampled grid
+    β = 2.0  # power law 
+    M = 10 # number of observations
+end
 
 # ╔═╡ 5ca1234f-374e-4838-834d-96a792125b9a
 begin
     ## make a power law (sample frequency spectrum)
-
-    # record length/ simulation length.
-    T = 1000 # repeat interval
-    N = 20 # number of points on regularly sampled grid
-    β = 2.0  # power law 
     Δt = T/N # time interval of regular sampling
     fwidth = N/T # Δf = bandwidth, min to max frequencies
     ffundamental = 1/T # fundamental frequency
     fnyquist = 1/2Δt # Nyquist frequency
-    σ2 = 1.0  # estimate of total variance
     n = SpectraFromScratch.fourier_modes(N)
     nf = maximum(abs.(n))
     f_positive = (1:nf)/T #  goes between fundamental and Nyquist frequencies
@@ -61,9 +66,6 @@ plot(Ψ.freq,
 ## make regular timeseries (non-deterministic)
 x̂true = SpectraFromScratch.FourierTransform(Ψ)    
 
-# ╔═╡ 70824ba7-673d-4998-9b07-733b7fd89136
-phase(x̂true)
-
 # ╔═╡ 81ea80de-4e29-46e5-a5b2-3ab12faee0b5
 xtrue = SpectraFromScratch.RegularTimeseries(x̂true)
 
@@ -77,7 +79,6 @@ plot(0.0 .+ xtrue.time,
 ## make irregular samples (using linear interpolation)
 begin
     Tinclusive =  maximum(xtrue.time) - minimum(xtrue.time)
-    M = 20; # number of observations
     t = rand(M)*Tinclusive
 end
 
@@ -110,7 +111,6 @@ ytrue_interp = irregular_sample_fourier_transform_interp(t, x̂true)
 # ╔═╡ 8b66a95a-1e69-4ade-9eec-da0a1d7aef2c
 begin
     # contaminate observations with noise
-    σn = 0.5
     noise = σn * randn(M)
     y = ytrue .+ noise
     y_interp = ytrue_interp .+ noise
@@ -245,10 +245,10 @@ end
 
 # ╔═╡ 85916c6d-596a-4fc1-85e2-d6e807298e78
 #### Check reconstructed phase
-ϕtrue = phase(x̂true)
+ϕtrue = SpectraFromScratch.phase(x̂true)
 
 # ╔═╡ 47cf58a0-f311-4a24-aba1-69ba35a32cd6
-ϕ̃ = phase(x̂̃)
+ϕ̃ = SpectraFromScratch.phase(x̂̃)
 
 # ╔═╡ 3bd45108-1c9c-49b4-933e-c6370136e38f
 begin 
@@ -256,15 +256,39 @@ begin
 	plot!(ϕtrue[1:end], label="ϕ_true")	
 end
 
+# ╔═╡ e5c469f7-a708-4e2c-84ed-ec99318852e5
+# ╠═╡ disabled = true
+#=╠═╡
+# other input parameters (with units)
+begin
+    T = 1000yr # repeat interval
+    σ2 = 1.0K^2  # estimate of total variance
+    σxbar = 1.0K  # uncertainty of mean (not given by spectrum)
+    σn = 0.1K # noise (contamination) in observations
+end
+  ╠═╡ =#
+
+# ╔═╡ 800268df-d276-48ba-b0ba-cba2f12017af
+# other input parameters (unitless)
+begin
+    T = 1000 # repeat interval
+    σ2 = 1.0  # estimate of total variance
+    σxbar = 1.0  # uncertainty of mean (not given by spectrum)
+    σn = 0.1 # noise (contamination) in observations
+end
+
 # ╔═╡ Cell order:
 # ╠═4b0a896e-b28a-11f1-b73f-77977d857f62
 # ╠═8b2fe3cb-4557-4634-82b8-1e14e403bfcb
+# ╠═bbf5fc8e-5aa6-4c2c-9bf0-bfa29aa27ad3
 # ╠═09001ed8-00a9-4d65-bf2f-70a87fac3e4f
 # ╠═1e8fe281-32a0-4923-8b1a-b35d6bdc28a7
+# ╠═9bc25924-52ee-4c2a-9d41-68fa26b21ed9
+# ╠═800268df-d276-48ba-b0ba-cba2f12017af
+# ╠═e5c469f7-a708-4e2c-84ed-ec99318852e5
 # ╠═5ca1234f-374e-4838-834d-96a792125b9a
 # ╠═16f76114-2812-4ee0-b6bf-6b9832d08757
 # ╠═f7a1395a-b65a-4d84-a062-8851b82af3ad
-# ╠═70824ba7-673d-4998-9b07-733b7fd89136
 # ╠═81ea80de-4e29-46e5-a5b2-3ab12faee0b5
 # ╠═4d278660-dd7a-4749-9765-67ad369eefa2
 # ╠═7ce0b464-a849-4211-8a14-314fb4294eb3
