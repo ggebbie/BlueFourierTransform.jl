@@ -13,3 +13,6 @@ AlgebraicArrays = {rev = "main", url = "https://github.com/ggebbie/AlgebraicArra
 BLUEs = {rev = "main", url = "https://github.com/ggebbie/BLUEs.jl"}
 BlueFourierTransform = {path = ".."}
 SpectraFromScratch = {rev = "main", url = "https://github.com/ggebbie/SpectraFromScratch.jl"}
+
+[compat]
+Revise = "3.17.3"
