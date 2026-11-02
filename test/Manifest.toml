@@ -2,7 +2,7 @@
 
 julia_version = "1.13.1"
 manifest_format = "2.1"
-project_hash = "fa42aec8f21542b75df3f9278f8ab9676057f849"
+project_hash = "b98bbca20f6683981095cdb2f77f95d8d86d5655"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -105,7 +105,7 @@ version = "1.11.0"
 deps = ["BLUEs", "OffsetArrays", "SpectraFromScratch"]
 path = ".."
 uuid = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
-version = "1.1.0-DEV"
+version = "1.2.0-DEV"
 
 [[deps.CRC32c]]
 uuid = "8bf52ea8-c179-5cab-976a-9e18b702a9bc"
@@ -559,11 +559,11 @@ uuid = "189a3867-3050-52da-a836-e630ba90ab69"
 version = "1.2.2"
 
 [[deps.Revise]]
-deps = ["CRC32c", "CodeTracking", "FileWatching", "JuliaInterpreter", "LibGit2", "LoweredCodeUtils", "OrderedCollections", "Preferences", "REPL", "UUIDs"]
-git-tree-sha1 = "82ac67271b84f674fccccbc9f92b106941fb8c65"
+deps = ["CRC32c", "CodeTracking", "FileWatching", "JuliaInterpreter", "LibGit2", "LoweredCodeUtils", "OrderedCollections", "Preferences", "REPL", "Serialization", "UUIDs"]
+git-tree-sha1 = "da47b1bd8be0a3f80073d9b8bf0c614a3c474d58"
 registries = "General"
 uuid = "295af30f-e4ad-537b-8983-00126c2a3abe"
-version = "3.17.1"
+version = "3.18.0"
 
     [deps.Revise.extensions]
     DistributedExt = "Distributed"
