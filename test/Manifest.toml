@@ -2,7 +2,7 @@
 
 julia_version = "1.13.1"
 manifest_format = "2.1"
-project_hash = "fa42aec8f21542b75df3f9278f8ab9676057f849"
+project_hash = "d7ae3d81d22e7a332c8fa98c444f41ffd3971b49"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -105,7 +105,7 @@ version = "1.11.0"
 deps = ["BLUEs", "OffsetArrays", "SpectraFromScratch"]
 path = ".."
 uuid = "8affaaae-a27d-4c7c-8574-c3063e669eb7"
-version = "1.1.0-DEV"
+version = "1.2.0-DEV"
 
 [[deps.CRC32c]]
 uuid = "8bf52ea8-c179-5cab-976a-9e18b702a9bc"
@@ -440,10 +440,10 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 version = "1.3.0"
 
 [[deps.OffsetArrays]]
-git-tree-sha1 = "117432e406b5c023f665fa73dc26e79ec3630151"
+git-tree-sha1 = "750d0f2b5aac238d50dfee5f7a44fae3175a3305"
 registries = "General"
 uuid = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
-version = "1.17.0"
+version = "1.18.0"
 
     [deps.OffsetArrays.extensions]
     OffsetArraysAdaptExt = "Adapt"
